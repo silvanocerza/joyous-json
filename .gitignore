@@ -1,0 +1,35 @@
+
+# Created by https://www.toptal.com/developers/gitignore/api/go,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=go,visualstudiocode
+
+### Go ###
+# If you prefer the allow list template instead of the deny list, see community template:
+# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
+#
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+joyous-json
+jj
+
+# Test binary, built with `go test -c`
+*.test
+
+
+### VisualStudioCode ###
+.vscode/*
+
+# Local History for Visual Studio Code
+.history/
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+# Support for Project snippet scope
+
+# End of https://www.toptal.com/developers/gitignore/api/go,visualstudiocode
