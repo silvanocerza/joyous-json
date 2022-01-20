@@ -9,34 +9,35 @@ import (
 )
 
 // NewFilterInIfEqual returns a step that returns true if key exists in m and has identical value
-func NewFilterInIfEqual(key string, value interface{}) processor.StepFunc {
+func NewFilterInIfEqual(key string, value string) processor.StepFunc {
 	return func(m *map[string]interface{}) (bool, error) {
 		v, ok := (*m)[key]
 		if !ok {
 			return false, nil
 		}
-		return v == value, nil
+
+		return fmt.Sprint(v) == value, nil
 	}
 }
 
 // NewFilterInIfDifferent returns a step that returns true if key exists in m and has different value
-func NewFilterInIfDifferent(key string, value interface{}) processor.StepFunc {
+func NewFilterInIfDifferent(key string, value string) processor.StepFunc {
 	return func(m *map[string]interface{}) (bool, error) {
 		v, ok := (*m)[key]
 		if !ok {
 			return false, nil
 		}
-		return v != value, nil
+		return fmt.Sprint(v) != value, nil
 	}
 }
 
 // NewFilterOutIfEqual returns a step that returns true if key exists in m and has different value
-func NewFilterOutIfEqual(key string, value interface{}) processor.StepFunc {
+func NewFilterOutIfEqual(key string, value string) processor.StepFunc {
 	return NewFilterInIfDifferent(key, value)
 }
 
 // NewFilterOutIfDifferent returns a step that returns true if key exists in m and has identical value
-func NewFilterOutIfDifferent(key string, value interface{}) processor.StepFunc {
+func NewFilterOutIfDifferent(key string, value string) processor.StepFunc {
 	return NewFilterInIfEqual(key, value)
 }
 

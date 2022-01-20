@@ -7,7 +7,7 @@ import (
 )
 
 func TestNewFilterInIfEqual(t *testing.T) {
-	s := NewFilterInIfEqual("key", 420)
+	s := NewFilterInIfEqual("key", "420")
 	input := map[string]interface{}{
 		"key": 420,
 	}
@@ -37,7 +37,7 @@ func TestNewFilterInIfEqual(t *testing.T) {
 }
 
 func TestNewFilterInIfDifferent(t *testing.T) {
-	s := NewFilterInIfDifferent("key", 5)
+	s := NewFilterInIfDifferent("key", "5")
 	input := map[string]interface{}{
 		"key": 420,
 	}
@@ -67,7 +67,7 @@ func TestNewFilterInIfDifferent(t *testing.T) {
 }
 
 func TestNewFilterOutIfEqual(t *testing.T) {
-	s := NewFilterOutIfEqual("key", 5)
+	s := NewFilterOutIfEqual("key", "5")
 	input := map[string]interface{}{
 		"key": 420,
 	}
@@ -97,7 +97,7 @@ func TestNewFilterOutIfEqual(t *testing.T) {
 }
 
 func TestNewFilterOutIfDifferent(t *testing.T) {
-	s := NewFilterOutIfDifferent("key", 420)
+	s := NewFilterOutIfDifferent("key", "420")
 	input := map[string]interface{}{
 		"key": 420,
 	}
