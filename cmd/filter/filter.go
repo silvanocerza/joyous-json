@@ -11,12 +11,18 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var Example = `  jj filter out team team-x
+  jj filter out timestamp \>=1642328776
+  jj filter in severity \!0`
+
 func NewCommand() *cobra.Command {
 	return &cobra.Command{
-		Use:     "filter",
-		Short:   "",
-		Long:    "",
-		Example: "",
+		Use:   "filter",
+		Short: "Filter in or out JSON objects based on their key values",
+		Long: "Filter in or out JSON objects. It can filter wether a key exists\n" +
+			"or not. It can also filter based on a key value, wther it's greater, less,\n" +
+			"equal or unequal.",
+		Example: Example,
 		Args:    cobra.RangeArgs(2, 3),
 		Run:     runFilter,
 	}

@@ -9,12 +9,16 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var Example string = `  jj prefix team old_
+  jj prefix id incident_`
+
 func NewCommand() *cobra.Command {
 	return &cobra.Command{
-		Use:     "prefix",
-		Short:   "",
-		Long:    "",
-		Example: "",
+		Use:   "prefix <key> <prefix>",
+		Short: "Prefixes a key with a custom prefix",
+		Long: "Prefixes a key with a custom prefix if the key is found in a JSON object.\n" +
+			"If the prefixed key already exists it's overwritten.",
+		Example: Example,
 		Args:    cobra.ExactArgs(2),
 		Run:     runPrefix,
 	}

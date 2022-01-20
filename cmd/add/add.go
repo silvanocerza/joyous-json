@@ -9,12 +9,16 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var Example string = `  jj add incident_id 6502
+  jj add new_team team-w`
+
 func NewCommand() *cobra.Command {
 	return &cobra.Command{
-		Use:     "add",
-		Short:   "",
-		Long:    "",
-		Example: "",
+		Use:   "add <key> <value>",
+		Short: "Adds a new key value pair",
+		Long: "Adds a new key value pair to all processed JSON objects in the stream." +
+			"If the key already exist it's overwritten.",
+		Example: Example,
 		Args:    cobra.ExactArgs(2),
 		Run:     runAdd,
 	}
