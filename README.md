@@ -163,10 +163,12 @@ To build:
 go build -o jj
 ```
 
-To run tests:
+To run tests and benchmarks:
 
 ```
-go test ./...
+go test -v -coverpkg=./... -covermode=atomic ./...
+
+go test -benchmem -bench . ./...
 ```
 
 To run an example usage scenario, first build the tool with the above command and run:

@@ -4,11 +4,26 @@ import (
 	"bytes"
 	"fmt"
 	"io"
+	"os"
+	"path/filepath"
 	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
 )
+
+func BenchmarkProcessor(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		file, _ := os.Open(filepath.Join(".", "testdata", "test.json"))
+		p := New(file, io.Discard)
+		p.AddStep(func(m *map[string]interface{}) (bool, error) {
+			(*m)["test"] = "value"
+			return true, nil
+		})
+		p.ReadAll()
+		file.Close()
+	}
+}
 
 func TestNextWithoutSteps(t *testing.T) {
 	reader := strings.NewReader(`{"team": "team-c"}`)
