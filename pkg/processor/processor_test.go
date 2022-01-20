@@ -2,7 +2,6 @@ package processor
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"io"
 	"strings"
@@ -113,11 +112,11 @@ func TestNextWithMultipleSteps(t *testing.T) {
 
 	// Add some steps
 	p.AddStep(func(value *map[string]interface{}) (bool, error) {
-		sev, err := (*value)["severity"].(json.Number).Int64()
-		if err != nil {
-			return false, err
+		sev, ok := (*value)["severity"].(float64)
+		if !ok {
+			return false, nil
 		}
-		if sev > 2 {
+		if sev > 2.0 {
 			return true, nil
 		}
 		return false, nil
