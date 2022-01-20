@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"github.com/silvanocerza/joyous-json/cmd/add"
+	"github.com/silvanocerza/joyous-json/cmd/prefix"
 	"github.com/spf13/cobra"
 )
 
@@ -14,6 +15,7 @@ func Root() *cobra.Command {
 	}
 
 	root.AddCommand(add.NewCommand())
+	root.AddCommand(prefix.NewCommand())
 
 	return root
 }
